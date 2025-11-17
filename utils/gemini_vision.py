@@ -1,6 +1,6 @@
 """
 Gemini Vision Integration Module
-Uses Google's Gemini 2.0 Flash Vision for construction safety analysis
+Uses Google's Gemini 1.5 Flash for construction safety analysis
 """
 
 import json
@@ -25,8 +25,8 @@ class ConstructionSafetyAnalyzer:
             raise ValueError("Gemini API key is required")
 
         genai.configure(api_key=api_key)
-        # Using gemini-pro-vision for image analysis (compatible with all API versions)
-        self.model = genai.GenerativeModel('gemini-pro-vision')
+        # Using gemini-1.5-flash for fast, efficient image analysis
+        self.model = genai.GenerativeModel('gemini-1.5-flash')
         self.bis_db = BISDatabase()
         print("✅ Gemini Vision initialized")
 
