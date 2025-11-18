@@ -73,11 +73,12 @@ st.markdown("""
         letter-spacing: -0.02em;
         margin: 0;
         position: relative;
-        background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f0abfc 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 0 0 40px rgba(96, 165, 250, 0.3);
+        color: #60a5fa;
+        text-shadow:
+            0 0 20px rgba(96, 165, 250, 0.8),
+            0 0 40px rgba(167, 139, 250, 0.6),
+            0 0 60px rgba(240, 171, 252, 0.4),
+            0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     .main-header p {
@@ -354,6 +355,37 @@ st.markdown("""
     .stProgress > div > div > div {
         background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
     }
+
+    /* Input Fields */
+    input[type="text"], input[type="password"] {
+        background: white !important;
+        border: 2px solid #cbd5e1 !important;
+        border-radius: 8px !important;
+        padding: 0.75rem !important;
+        font-size: 1rem !important;
+        color: #0f172a !important;
+        transition: all 0.2s ease !important;
+    }
+
+    input[type="text"]::placeholder, input[type="password"]::placeholder {
+        color: #94a3b8 !important;
+        opacity: 1 !important;
+    }
+
+    input[type="text"]:focus, input[type="password"]:focus {
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+        outline: none !important;
+    }
+
+    /* Login Form Styling */
+    [data-testid="stForm"] {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -400,10 +432,11 @@ def initialize_session_state():
 
 def render_login():
     """Render the login form."""
-    st.header("Login")
+    st.header("🔐 Login to Site Analytics")
+    st.caption("Access advanced analytics and historical data")
     with st.form("login_form"):
-        username = st.text_input("Username")
-        password = st.text_input("Password", type="password")
+        username = st.text_input("Username", placeholder="Enter your username")
+        password = st.text_input("Password", type="password", placeholder="Enter your password")
         submitted = st.form_submit_button("Login")
         if submitted:
             # Hardcoded credentials for demonstration
@@ -412,6 +445,8 @@ def render_login():
                 st.rerun()
             else:
                 st.error("Invalid username or password")
+
+    st.info("💡 Demo credentials: **Username:** `site_owner` | **Password:** `safesite`")
 
 def render_sidebar():
     """Render sidebar with site information and BIS standards"""
