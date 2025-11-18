@@ -1,0 +1,58 @@
+# Environment
+.env
+venv/
+__pycache__/
+*.pyc
+*.py[cod]
+*$py.class
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Cloud credentials
+*.json
+gcp-credentials.json
+service-account-*.json
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Testing
+.pytest_cache/
+htmlcov/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+temp_upload.*
+
+# Unnecessary documentation files
+AI_GUARDRAILS_EXPLANATION.md
+CLOUD_SETUP_STEPS.md
+FEATURES_SUMMARY.md
+FIXES_APPLIED.md
+FIX_BIGQUERY_SCHEMA.md
+GOOGLE_CLOUD_SETUP.md
+LATEST_FIXES.md
+PROJECT_COMPLETE.md
+PROJECT_SUMMARY.md
+QUICK_REFERENCE.md
+QUICK_START.md
+SETUP_CLOUD.md
+SETUP_GUIDE.md
+TIMEOUT_FIX.md
+readthis.md
+constrite_architecture.drawio
+
+# Batch/shell scripts (not needed in repo)
+*.bat
+fix_*.py
+test_*.py
+deploy_cloudrun.sh

@@ -1,4 +1,4 @@
-# 🏗️ SafeSite AI - Construction Safety Monitor
+# 🏗️ ConStrite - Construction Safety Monitor
 
 [![Gemini 2.0 Flash](https://img.shields.io/badge/Gemini-2.0%20Flash-4285F4?logo=google)](https://ai.google.dev)
 [![Cloud Run](https://img.shields.io/badge/Cloud%20Run-Deployed-4285F4?logo=google-cloud)](https://cloud.google.com/run)
@@ -26,7 +26,7 @@ Every day in India, **130 construction workers die** due to preventable safety v
 
 ## ✨ Our Solution
 
-**SafeSite AI** uses Google's latest **Gemini 2.0 Flash Vision** to analyze construction site photos in **5 seconds** and provide:
+**ConStrite** uses Google's latest **Gemini 2.5 Flash Vision** to analyze construction site photos in **5 seconds** and provide:
 
 ✅ **Instant Safety Analysis** - AI detects violations in real-time
 ✅ **BIS Compliance Checking** - 15+ Indian safety standards validated
@@ -64,7 +64,7 @@ Every day in India, **130 construction workers die** due to preventable safety v
 ```bash
 # Clone the repository
 git clone <your-repo-url>
-cd safesite-ai
+cd constrite
 
 # Create virtual environment
 python -m venv venv
@@ -138,7 +138,7 @@ Track safety trends across:
        │ Upload Image
        ▼
 ┌─────────────────┐
-│  Gemini 2.0     │
+│  Gemini 2.5     │
 │  Flash Vision   │◄─── BIS Standards Database
 └─────┬───────────┘
       │ Analysis Result
@@ -163,7 +163,7 @@ All running on Cloud Run (Serverless)
 ## 📁 Project Structure
 
 ```
-safesite-ai/
+constrite/
 ├── app.py                      # Main Streamlit application
 ├── requirements.txt            # Python dependencies
 ├── Dockerfile                  # Container configuration
@@ -195,13 +195,13 @@ safesite-ai/
 
 ```bash
 # Build Docker image
-docker build -t safesite-ai:local .
+docker build -t constrite:local .
 
 # Run container
 docker run -p 8080:8080 \
   -e GEMINI_API_KEY=your_api_key \
   -e GCP_PROJECT_ID=your_project_id \
-  safesite-ai:local
+  constrite:local
 ```
 
 ### Deploy to Cloud Run
@@ -412,7 +412,7 @@ Every analysis, every violation detected, every recommendation followed - could 
 
 <div align="center">
 
-**🏗️ SafeSite AI - Saving Lives Through AI**
+**🏗️ ConStrite - Saving Lives Through AI**
 
 Built with ❤️ for BNB Marathon 2025
 
