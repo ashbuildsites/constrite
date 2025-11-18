@@ -118,8 +118,8 @@ class BigQueryLogger:
                 AVG(compliance_score) as avg_compliance_score,
                 COUNT(DISTINCT site_id) as unique_sites,
                 COUNT(DISTINCT contractor) as unique_contractors,
-                SUM(ARRAY_LENGTH(critical_violations)) as total_critical_violations,
-                SUM(ARRAY_LENGTH(warnings)) as total_warnings,
+                SUM(ARRAY_LENGTH(JSON_QUERY_ARRAY(critical_violations))) as total_critical_violations,
+                SUM(ARRAY_LENGTH(JSON_QUERY_ARRAY(warnings))) as total_warnings,
                 COUNTIF(risk_level = 'CRITICAL') as critical_risk_count,
                 COUNTIF(risk_level = 'HIGH') as high_risk_count,
                 COUNTIF(risk_level = 'MEDIUM') as medium_risk_count,
@@ -176,8 +176,8 @@ class BigQueryLogger:
                 compliance_score,
                 risk_level,
                 total_workers,
-                ARRAY_LENGTH(critical_violations) as critical_count,
-                ARRAY_LENGTH(warnings) as warning_count
+                ARRAY_LENGTH(JSON_QUERY_ARRAY(critical_violations)) as critical_count,
+                ARRAY_LENGTH(JSON_QUERY_ARRAY(warnings)) as warning_count
             FROM `{self.table_ref}`
             WHERE site_id = @site_id
             ORDER BY timestamp DESC
@@ -227,21 +227,22 @@ class BigQueryLogger:
         try:
             query = f"""
             WITH violations_unnested AS (
-                SELECT violation.violation as violation_text,
-                       violation.bis_code as bis_code
+                SELECT JSON_VALUE(violation, '$.violation') as violation_text,
+                       JSON_VALUE(violation, '$.bis_code') as bis_code
                 FROM `{self.table_ref}`,
-                UNNEST(critical_violations) as violation
+                UNNEST(JSON_QUERY_ARRAY(critical_violations)) as violation
                 UNION ALL
-                SELECT warning.violation as violation_text,
-                       warning.bis_code as bis_code
+                SELECT JSON_VALUE(warning, '$.violation') as violation_text,
+                       JSON_VALUE(warning, '$.bis_code') as bis_code
                 FROM `{self.table_ref}`,
-                UNNEST(warnings) as warning
+                UNNEST(JSON_QUERY_ARRAY(warnings)) as warning
             )
             SELECT
                 violation_text,
                 bis_code,
                 COUNT(*) as occurrence_count
             FROM violations_unnested
+            WHERE violation_text IS NOT NULL
             GROUP BY violation_text, bis_code
             ORDER BY occurrence_count DESC
             LIMIT {limit}

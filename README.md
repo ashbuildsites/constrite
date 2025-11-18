@@ -24,12 +24,14 @@ Every day in India, **130 construction workers die** due to preventable safety v
 
 ConStrite provides **instant AI-powered safety analysis** in just 5 seconds:
 
-✅ **Instant Violation Detection** - AI identifies safety hazards in real-time
+✅ **Instant Violation Detection** - Upload images and get immediate AI safety analysis
 ✅ **BIS Compliance Checking** - Validates against 15+ Indian safety standards
 ✅ **Risk Assessment** - 0-100 risk scoring with urgency classification
 ✅ **Financial Impact** - Calculate potential fines vs compliance costs
 ✅ **Actionable Insights** - Prioritized recommendations with timeline and budget
 ✅ **Analytics Dashboard** - Track safety trends across sites and contractors
+
+> **🚧 Future Enhancement**: Real-time video monitoring via CCTV cameras and IoT sensors for continuous safety surveillance
 
 ---
 
@@ -183,8 +185,8 @@ constrite/
 │   └── bigquery_logger.py   # BigQuery analytics
 │
 ├── pages/
-│   ├── live_monitoring.py   # Real-time dashboard
-│   └── site_analytics.py    # Historical analytics
+│   ├── analysis_dashboard.py # Safety analytics dashboard
+│   └── site_analytics.py     # Historical site analytics
 │
 ├── .streamlit/
 │   └── config.toml          # Streamlit configuration

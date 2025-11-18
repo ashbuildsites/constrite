@@ -1,6 +1,6 @@
 """
-Live Monitoring Dashboard
-Real-time construction safety monitoring across all sites
+Analysis Dashboard
+Historical safety analysis and insights across all sites
 """
 
 import streamlit as st
@@ -20,7 +20,7 @@ from utils.bigquery_logger import BigQueryLogger
 
 # Page configuration
 st.set_page_config(
-    page_title="Live Monitoring - ConStrite",
+    page_title="Analysis Dashboard - ConStrite",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -99,12 +99,12 @@ def render_header():
     col1, col2 = st.columns([3, 1])
 
     with col1:
-        st.title("📊 Live Safety Monitoring Dashboard")
-        st.caption("Real-time construction safety monitoring across all sites")
+        st.title("📊 Safety Analysis Dashboard")
+        st.caption("Historical safety insights and analytics across all sites")
 
     with col2:
         st.markdown(
-            '<div class="refresh-indicator">🔴 LIVE</div>',
+            '<div class="refresh-indicator">📈 ANALYTICS</div>',
             unsafe_allow_html=True
         )
 
@@ -357,7 +357,7 @@ def main():
         st.session_state.logged_in = False
 
     if not st.session_state.logged_in:
-        st.warning("Please log in from the main page to view the live monitoring dashboard.")
+        st.warning("Please log in from the main page to view the analysis dashboard.")
         return
 
     initialize_connections()
@@ -369,7 +369,7 @@ def main():
         st.warning("""
         ⚠️ **Firestore Not Connected**
 
-        Live monitoring requires Firestore to be configured.
+        The analysis dashboard requires Firestore to be configured.
         Please set up your Google Cloud credentials and configure Firestore.
 
         See the documentation for setup instructions.
