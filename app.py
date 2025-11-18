@@ -378,6 +378,10 @@ def render_header():
 
 def initialize_session_state():
     """Initialize session state variables"""
+    # Authentication state - must persist across pages
+    if 'logged_in' not in st.session_state:
+        st.session_state.logged_in = False
+
     if 'analysis_result' not in st.session_state:
         st.session_state.analysis_result = None
     if 'uploaded_image' not in st.session_state:
@@ -392,8 +396,6 @@ def initialize_session_state():
         st.session_state.bigquery_logger = BigQueryLogger()
     if 'pdf_generator' not in st.session_state:
         st.session_state.pdf_generator = SafetyReportPDF()
-    if 'logged_in' not in st.session_state:
-        st.session_state.logged_in = False
 
 
 def render_login():

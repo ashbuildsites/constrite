@@ -66,17 +66,19 @@ def main():
         layout="wide"
     )
 
+    # Initialize session state for authentication
+    if 'logged_in' not in st.session_state:
+        st.session_state.logged_in = False
+
     st.title("📊 Site Analytics")
     st.write("View historical safety data for your construction sites.")
 
-    # Simple password protection
-    password = st.text_input("Enter password to access analytics", type="password")
-
-    # Hardcoded password for demonstration purposes
-    if password == "safesite":
+    # Check if user is logged in from main app
+    if st.session_state.logged_in:
         show_analytics()
-    elif password:
-        st.error("Incorrect password.")
+    else:
+        st.warning("⚠️ Please log in from the main page to access Site Analytics.")
+        st.info("Navigate to the Home page and log in with username: `site_owner` and password: `safesite`")
 
 if __name__ == "__main__":
     main()
