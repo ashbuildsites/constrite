@@ -73,14 +73,20 @@ st.markdown("""
         letter-spacing: -0.02em;
         margin: 0;
         position: relative;
+        background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f0abfc 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 0 40px rgba(96, 165, 250, 0.3);
     }
 
     .main-header p {
         font-size: 1.1rem;
-        opacity: 0.9;
+        color: #e0e7ff;
         margin-top: 0.5rem;
         font-weight: 400;
         position: relative;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     /* Metric Cards */
