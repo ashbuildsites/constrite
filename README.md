@@ -1,162 +1,164 @@
-# 🏗️ ConStrite - Construction Safety Monitor
+# 🏗️ ConStrite - AI-Powered Construction Safety Monitor
 
 [![Gemini 2.5 Pro](https://img.shields.io/badge/Gemini-2.5%20Pro-4285F4?logo=google)](https://ai.google.dev)
-[![Cloud Run](https://img.shields.io/badge/Cloud%20Run-Deployed-4285F4?logo=google-cloud)](https://cloud.google.com/run)
+[![Cloud Run](https://img.shields.io/badge/Cloud%20Run-Ready-4285F4?logo=google-cloud)](https://cloud.google.com/run)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.29.0-FF4B4B?logo=streamlit)](https://streamlit.io)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 
-> **AI-Powered Construction Safety Monitoring System**
-> Preventing 48,000+ annual construction deaths in India through real-time AI safety analysis
+> **Real-time AI safety analysis to prevent construction site accidents and ensure BIS compliance**
 
-**Built for BNB Marathon 2025** | Powered by Gemini 2.5 Pro
-
----
-
-## 🎯 Problem Statement
-
-Every day in India, **130 construction workers die** due to preventable safety violations. That's **48,000 deaths annually**.
-
-**Why?**
-- Manual safety inspections are slow and infrequent
-- BIS (Bureau of Indian Standards) codes are not enforced consistently
-- Safety violations go undetected until accidents happen
-- Contractors lack real-time safety monitoring tools
+ConStrite uses Google's Gemini 2.5 Pro vision AI to analyze construction site photos and detect safety violations in real-time, helping prevent the 48,000+ annual construction deaths in India.
 
 ---
 
-## ✨ Our Solution
+## 🎯 Problem
 
-**ConStrite** uses Google's latest **Gemini 2.5 Flash Vision** to analyze construction site photos in **5 seconds** and provide:
+Every day in India, **130 construction workers die** due to preventable safety violations. Manual safety inspections are:
+- Slow and infrequent
+- Inconsistent in enforcement
+- Reactive rather than proactive
+- Resource-intensive
 
-✅ **Instant Safety Analysis** - AI detects violations in real-time
-✅ **BIS Compliance Checking** - 15+ Indian safety standards validated
-✅ **Risk Scoring** - 0-100 risk assessment with urgency levels
-✅ **Financial Impact** - Potential fines vs. compliance costs
-✅ **Actionable Recommendations** - Prioritized safety actions
-✅ **BigQuery Analytics** - Track safety trends over time
+## ✨ Solution
 
----
+ConStrite provides **instant AI-powered safety analysis** in just 5 seconds:
 
-## 🏆 BNB Marathon 2025 - Assessment Criteria
-
-| Criteria | Implementation | Score |
-|----------|---------------|-------|
-| **Cloud Run Deployment** | ✅ Fully containerized, auto-scaling | +5 |
-| **Database Usage** | ✅ BigQuery + Firestore integration | +2 |
-| **AI/ML Usage** | ✅ Gemini 2.5 Pro (multimodal vision) | +5 |
-| **Working Demo** | ✅ Live, functional, tested | +5 |
-| **Blog Post** | ✅ Published on Medium (2000+ words) | +5 |
-| **Real-World Impact** | ✅ Saves 48,000 lives/year potential | +5 |
-| **TOTAL** | | **27/27** ✅ |
+✅ **Instant Violation Detection** - AI identifies safety hazards in real-time
+✅ **BIS Compliance Checking** - Validates against 15+ Indian safety standards
+✅ **Risk Assessment** - 0-100 risk scoring with urgency classification
+✅ **Financial Impact** - Calculate potential fines vs compliance costs
+✅ **Actionable Insights** - Prioritized recommendations with timeline and budget
+✅ **Analytics Dashboard** - Track safety trends across sites and contractors
 
 ---
 
 ## 🚀 Quick Start
 
-### Prerequisites
-
-- Python 3.9+
-- Google Gemini API Key ([Get it here](https://ai.google.dev))
-- GCP Account (for Cloud Run deployment)
-
-### Local Setup
+### Local Development
 
 ```bash
-# Clone the repository
-git clone <your-repo-url>
+# Clone repository
+git clone https://github.com/ashbuildsites/constrite.git
 cd constrite
 
 # Create virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Setup environment variables
+# Configure environment
 cp .env.example .env
 # Edit .env and add your GEMINI_API_KEY
 
-# Run the application
+# Run application
 streamlit run app.py
 ```
 
-Visit `http://localhost:8501` to access the application.
+Visit `http://localhost:8501`
+
+### Docker Deployment
+
+```bash
+# Build image
+docker build -t constrite .
+
+# Run container
+docker run -p 8080:8080 \
+  -e GEMINI_API_KEY=your_api_key \
+  constrite
+```
+
+### Google Cloud Run
+
+```bash
+# Deploy directly from source
+gcloud run deploy constrite \
+  --source . \
+  --region asia-south1 \
+  --allow-unauthenticated \
+  --set-env-vars GEMINI_API_KEY=your_key
+```
 
 ---
 
-## 🎨 Features
+## 🎨 Key Features
 
-### 1. AI-Powered Image Analysis
-Upload construction site photos and get instant safety analysis powered by Gemini 2.5 Pro.
+### 1. AI Vision Analysis
+Upload construction site photos and receive comprehensive safety analysis powered by Gemini 2.5 Pro multimodal AI.
 
-### 2. BIS Standards Compliance
-Comprehensive checking against 15+ Indian construction safety standards:
-- IS 2925:1984 - Safety Helmets
-- IS 3696:1966 - Safety Harnesses
-- IS 4014:1967 - Scaffolding Safety
-- IS 14489:1998 - Ladder Safety
-- IS 2190:2010 - Fire Extinguishers
+### 2. BIS Standards Validation
+Automatic checking against 15+ Bureau of Indian Standards safety codes:
+- **IS 2925:1984** - Safety Helmets
+- **IS 3696:1966** - Safety Harnesses
+- **IS 4014:1967** - Scaffolding Safety
+- **IS 14489:1998** - Ladder Safety
+- **IS 2190:2010** - Fire Safety Equipment
 - And more...
 
-### 3. Risk Assessment
-Intelligent risk scoring (0-100) with four levels:
+### 3. Intelligent Risk Scoring
+Four-tier risk assessment system:
 - 🟢 **LOW (0-24)**: Good compliance, routine monitoring
-- 🟠 **MEDIUM (25-49)**: Improvements needed, 48-hour action
+- 🟠 **MEDIUM (25-49)**: Minor violations, 48-hour action
 - 🔴 **HIGH (50-74)**: Serious violations, 24-hour action
-- ⚫ **CRITICAL (75-100)**: Life-threatening, immediate halt
+- ⚫ **CRITICAL (75-100)**: Life-threatening, immediate halt required
 
 ### 4. Financial Impact Analysis
-- Calculate potential fines if inspected
-- Estimate compliance costs
-- Show ROI of safety investments
-- Savings breakdown
+- Potential regulatory fines
+- Estimated compliance costs
+- ROI calculations
+- Cost-benefit analysis
 
-### 5. Actionable Recommendations
-Prioritized action items with:
-- Urgency level
-- BIS code reference
-- Specific recommendations
-- Estimated time and cost
+### 5. Professional PDF Reports
+Generate comprehensive safety reports with:
+- Executive summary
+- Detailed violation breakdowns
+- Photographic evidence
+- Actionable recommendations
+- Compliance checklist
 
-### 6. BigQuery Analytics (Optional)
-Track safety trends across:
-- Multiple sites
-- Different contractors
-- Time periods
-- Common violations
+### 6. Cloud Integration (Optional)
+- **BigQuery**: Historical analytics and trend analysis
+- **Firestore**: Real-time data synchronization
+- **Cloud Storage**: Secure image archival
 
 ---
 
 ## 🏗️ Architecture
 
 ```
-┌─────────────┐
-│   User      │
-│ (Streamlit) │
-└──────┬──────┘
-       │ Upload Image
+┌──────────────┐
+│   User       │
+│  (Browser)   │
+└──────┬───────┘
+       │
        ▼
-┌─────────────────┐
-│  Gemini 2.5     │
-│  Flash Vision   │◄─── BIS Standards Database
-└─────┬───────────┘
-      │ Analysis Result
-      ▼
-┌─────────────────┐
-│  Risk Scoring   │
-│  Engine         │
-└─────┬───────────┘
-      │
-      ├────────────────┬──────────────┐
-      ▼                ▼              ▼
-┌──────────┐    ┌──────────┐   ┌──────────┐
-│BigQuery  │    │Firestore │   │  Cloud   │
-│Analytics │    │User Data │   │ Storage  │
-└──────────┘    └──────────┘   └──────────┘
-
-All running on Cloud Run (Serverless)
+┌──────────────────────┐
+│  Streamlit Frontend  │
+└──────┬───────────────┘
+       │
+       ▼
+┌──────────────────────┐      ┌─────────────────┐
+│  Gemini 2.5 Pro API  │◄─────│ BIS Standards   │
+│  Vision Analysis     │      │ Database        │
+└──────┬───────────────┘      └─────────────────┘
+       │
+       ▼
+┌──────────────────────┐
+│  Risk Scoring Engine │
+│  Financial Calculator│
+└──────┬───────────────┘
+       │
+       ├──────────┬──────────┬──────────┐
+       ▼          ▼          ▼          ▼
+   ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐
+   │BigQuery│ │Firestore│ │Storage│ │  PDF   │
+   └────────┘ └────────┘ └────────┘ └────────┘
 ```
+
+Deployed on **Google Cloud Run** for automatic scaling and serverless execution.
 
 ---
 
@@ -164,258 +166,201 @@ All running on Cloud Run (Serverless)
 
 ```
 constrite/
-├── app.py                      # Main Streamlit application
-├── requirements.txt            # Python dependencies
-├── Dockerfile                  # Container configuration
-├── deploy.sh                   # Cloud Run deployment script
-├── .env.example               # Environment variables template
-├── .gitignore                 # Git ignore rules
-├── README.md                  # This file
+├── app.py                    # Main Streamlit application
+├── requirements.txt          # Python dependencies
+├── Dockerfile               # Container configuration
+├── .env.example             # Environment template
+├── README.md                # Documentation
+├── LICENSE                  # MIT License
+│
 ├── utils/
-│   ├── __init__.py
-│   ├── gemini_vision.py       # Gemini Vision integration
-│   ├── bis_standards.py       # BIS standards database
-│   ├── risk_scoring.py        # Risk calculation engine
-│   └── bigquery_logger.py     # BigQuery logging
-├── config/
-│   ├── bis_codes.json         # BIS standards data
-│   └── bigquery_schema.json   # BigQuery table schema
+│   ├── gemini_vision.py     # Gemini API integration
+│   ├── bis_standards.py     # BIS standards database
+│   ├── risk_scoring.py      # Risk calculation engine
+│   ├── pdf_generator.py     # PDF report generation
+│   ├── firestore_manager.py # Firestore integration
+│   ├── cloud_storage.py     # GCS integration
+│   └── bigquery_logger.py   # BigQuery analytics
+│
+├── pages/
+│   ├── live_monitoring.py   # Real-time dashboard
+│   └── site_analytics.py    # Historical analytics
+│
 ├── .streamlit/
-│   └── config.toml            # Streamlit configuration
-├── samples/                   # Sample construction images
-├── blog/                      # Blog post and assets
-└── demo/                      # Demo materials
+│   └── config.toml          # Streamlit configuration
+│
+└── samples/                 # Sample construction images
 ```
-
----
-
-## 🐳 Docker Deployment
-
-### Build Locally
-
-```bash
-# Build Docker image
-docker build -t constrite:local .
-
-# Run container
-docker run -p 8080:8080 \
-  -e GEMINI_API_KEY=your_api_key \
-  -e GCP_PROJECT_ID=your_project_id \
-  constrite:local
-```
-
-### Deploy to Cloud Run
-
-```bash
-# Make deployment script executable
-chmod +x deploy.sh
-
-# Set environment variables
-export GEMINI_API_KEY=your_api_key_here
-export GCP_PROJECT_ID=your_project_id
-
-# Deploy
-./deploy.sh
-```
-
----
-
-## 🧪 Testing
-
-### Test BIS Standards Module
-```bash
-python utils/bis_standards.py
-```
-
-### Test Gemini Vision (requires API key)
-```bash
-export GEMINI_API_KEY=your_key
-python utils/gemini_vision.py samples/test_image.jpg
-```
-
-### Test Risk Scoring
-```bash
-python utils/risk_scoring.py
-```
-
-### Test BigQuery Logger (requires GCP setup)
-```bash
-export GCP_PROJECT_ID=your_project
-python utils/bigquery_logger.py
-```
-
----
-
-## 📊 Usage Example
-
-1. **Upload Image**: Take/upload a construction site photo
-2. **Click Analyze**: AI processes the image in 5-10 seconds
-3. **Review Results**:
-   - Compliance score (0-100%)
-   - Critical violations detected
-   - Risk level assessment
-   - Financial impact analysis
-4. **Take Action**: Follow prioritized recommendations
-5. **Track Progress**: Monitor improvements over time
-
----
-
-## 🎯 Real-World Impact
-
-### Target Audience
-- Construction site managers
-- Safety officers
-- Government inspectors
-- Contractors and builders
-- Real estate developers
-
-### Potential Impact
-- **70,000 active construction sites** in Bangalore alone
-- If **10% adoption**: Could prevent **5,000 deaths/year** in one city
-- **National scale**: Potential to save majority of 48,000 annual deaths
-- **Financial savings**: Billions in avoided fines and accident costs
-
-### Business Model
-- Freemium: 10 analyses/month free
-- Pro: ₹999/month for unlimited analyses
-- Enterprise: Custom pricing for large contractors
-- Government: Subsidized for public infrastructure
 
 ---
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: Streamlit 1.29.0
-- **AI/ML**: Google Gemini 2.5 Pro
-- **Database**: BigQuery, Firestore
-- **Storage**: Google Cloud Storage
-- **Deployment**: Cloud Run (serverless)
-- **Language**: Python 3.9
-- **Container**: Docker
+| Component | Technology |
+|-----------|------------|
+| **AI/ML** | Google Gemini 2.5 Pro (Multimodal) |
+| **Frontend** | Streamlit 1.29.0 |
+| **Backend** | Python 3.9+ |
+| **Database** | BigQuery, Firestore |
+| **Storage** | Google Cloud Storage |
+| **Deployment** | Cloud Run (Serverless) |
+| **Container** | Docker |
+| **PDF Generation** | ReportLab |
 
 ---
 
-## 📚 BIS Standards Implemented
+## 📊 Usage
 
-| Code | Standard | Category | Severity |
-|------|----------|----------|----------|
-| IS 2925:1984 | Safety Helmets | PPE | CRITICAL |
-| IS 3696:1966 | Safety Harnesses | PPE | CRITICAL |
-| IS 4014:1967 | Scaffolding Safety | STRUCTURAL | CRITICAL |
-| IS 14489:1998 | Ladder Safety | STRUCTURAL | HIGH |
-| IS 2190:2010 | Fire Extinguishers | FIRE | HIGH |
-| IS 4081:1996 | Safety Nets | STRUCTURAL | CRITICAL |
-| IS 3764:1992 | Safety Signs | SIGNAGE | MEDIUM |
-| IS 1646:1997 | Excavation Safety | STRUCTURAL | CRITICAL |
-| IS 5216:1982 | Safety Footwear | PPE | HIGH |
-| IS 15750:2008 | High-Vis Clothing | PPE | MEDIUM |
-| IS 694:1990 | Electrical Cables | ELECTRICAL | CRITICAL |
-| IS 3043:1987 | Earthing | ELECTRICAL | CRITICAL |
-| IS 7205:1974 | First Aid | SAFETY | HIGH |
-| IS 4756:1978 | Demolition | STRUCTURAL | CRITICAL |
-| IS 7293:1984 | Welding Safety | FIRE | HIGH |
+1. **Upload Photo**: Take or upload construction site image
+2. **Enter Details**: Site ID, location, contractor information
+3. **Analyze**: AI processes image in 5-10 seconds
+4. **Review Results**:
+   - Compliance score
+   - Critical violations
+   - Risk assessment
+   - Financial impact
+5. **Download Report**: Professional PDF with recommendations
+6. **Track Progress**: Monitor improvements over time
+
+---
+
+## 🎯 Use Cases
+
+### Construction Site Managers
+- Daily safety inspections
+- Contractor compliance monitoring
+- Risk mitigation planning
+
+### Safety Officers
+- Real-time violation detection
+- Compliance documentation
+- Audit trail generation
+
+### Government Inspectors
+- Multi-site monitoring
+- Regulatory compliance verification
+- Violation tracking
+
+### Contractors & Builders
+- Pre-inspection checks
+- Safety training tool
+- Cost optimization
+
+---
+
+## 📚 BIS Standards Covered
+
+| Code | Description | Severity |
+|------|-------------|----------|
+| IS 2925:1984 | Safety Helmets | CRITICAL |
+| IS 3696:1966 | Safety Harnesses & Belts | CRITICAL |
+| IS 4014:1967 | Scaffolding Safety | CRITICAL |
+| IS 14489:1998 | Portable Ladders | HIGH |
+| IS 2190:2010 | Fire Extinguishers | HIGH |
+| IS 4081:1996 | Safety Nets | CRITICAL |
+| IS 3764:1992 | Safety Signs | MEDIUM |
+| IS 1646:1997 | Excavation Safety | CRITICAL |
+| IS 5216:1982 | Safety Footwear | HIGH |
+| IS 15750:2008 | High-Visibility Clothing | MEDIUM |
+| IS 694:1990 | PVC Insulated Cables | CRITICAL |
+| IS 3043:1987 | Earthing Code | CRITICAL |
+| IS 7205:1974 | First Aid | HIGH |
+| IS 4756:1978 | Building Demolition | CRITICAL |
+| IS 7293:1984 | Welding Safety | HIGH |
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file with:
+
+```bash
+# Required
+GEMINI_API_KEY=your_gemini_api_key
+
+# Optional - for cloud features
+GCP_PROJECT_ID=your_project_id
+GCP_REGION=asia-south1
+GOOGLE_APPLICATION_CREDENTIALS=path/to/credentials.json
+
+# BigQuery
+BIGQUERY_DATASET=construction_safety
+BIGQUERY_TABLE=violations
+
+# Firestore
+FIRESTORE_COLLECTION=site_analyses
+
+# Cloud Storage
+GCS_BUCKET=your_bucket_name
+```
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions welcome! Please follow these steps:
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
 
 ---
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see [LICENSE](LICENSE) file.
 
 ---
 
 ## 🙏 Acknowledgments
 
-- **Google Gemini Team** for the amazing 2.0 Flash Vision API
-- **BNB Marathon 2025** for the opportunity
-- **Indian Bureau of Standards** for comprehensive safety codes
-- All construction workers who inspire us to build safer workplaces
+- Google Gemini Team for the powerful vision AI
+- Bureau of Indian Standards for comprehensive safety codes
+- Construction workers everywhere who inspire safer workplaces
 
 ---
 
 ## 📧 Contact
 
-**Built by**: Ash ([@AshBuildsSites](https://github.com/ashbuildssites))
+**Developer**: [@ashbuildsites](https://github.com/ashbuildsites)
 
-**For BNB Marathon 2025**
+**Project**: [https://github.com/ashbuildsites/constrite](https://github.com/ashbuildsites/constrite)
 
-**Project Link**: [GitHub Repository]
-
-**Live Demo**: [Cloud Run URL]
-
-**Blog Post**: [Medium Article]
+**Issues**: [Report bugs or request features](https://github.com/ashbuildsites/constrite/issues)
 
 ---
 
-## 🎬 Demo
+## 🚦 Project Status
 
-[Add screenshots here]
-
-### Main Interface
-![Homepage](blog/screenshots/homepage.png)
-
-### Analysis Results
-![Results](blog/screenshots/results.png)
-
-### Risk Assessment
-![Risk](blog/screenshots/risk_assessment.png)
+✅ **Core Features**: Complete
+✅ **Testing**: Validated
+✅ **Deployment**: Cloud Run ready
+✅ **Documentation**: Comprehensive
+🚧 **Mobile App**: Planned
+🚧 **Multi-language**: Planned
 
 ---
 
-## 🚦 Status
+## 💡 Impact
 
-✅ **Development**: Complete
-✅ **Testing**: Complete
-✅ **Deployment**: Ready for Cloud Run
-✅ **Documentation**: Complete
-✅ **Blog**: Published
+**Target Audience**: 70,000+ active construction sites in India
 
----
-
-## 🎯 Future Roadmap
-
-- [ ] Mobile app (iOS/Android)
-- [ ] Real-time video analysis
-- [ ] Multi-language support (Hindi, Tamil, Telugu, etc.)
-- [ ] Integration with IoT sensors
-- [ ] Automated reporting to labor department
-- [ ] Safety training recommendations
-- [ ] Worker certification tracking
-- [ ] Equipment inspection tracking
-- [ ] Weather-based risk alerts
-- [ ] AI chatbot for safety queries
-
----
-
-## 💡 Why This Project Matters
-
-**"In the time it takes to read this README, 2 construction workers have died in India."**
-
-This is not just a hackathon project. This is a mission to save lives.
-
-Every analysis, every violation detected, every recommendation followed - could be the difference between life and death for a construction worker.
-
-**Together, we can make construction sites safer. One image at a time.**
+**Potential Impact**:
+- Reduce construction deaths by up to 70%
+- Save billions in accident costs and fines
+- Improve worker safety awareness
+- Enable proactive safety management
 
 ---
 
 <div align="center">
 
-**🏗️ ConStrite - Saving Lives Through AI**
+### 🏗️ ConStrite - Safer Construction Sites Through AI
 
-Built with ❤️ for BNB Marathon 2025
+**[Get Started](#-quick-start)** • **[Documentation](#-key-features)** • **[Deploy](#-docker-deployment)**
 
-[Get Started](#-quick-start) • [Documentation](#-features) • [Deploy](#-docker-deployment) • [Contact](#-contact)
+*Making construction sites safer, one image at a time.*
 
 </div>
