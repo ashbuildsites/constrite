@@ -1,6 +1,6 @@
 """
 ConStrite - Construction Safety Monitoring Application
-Powered by Gemini 2.0 Flash Vision
+Powered by Gemini 2.5 Pro
 """
 
 import streamlit as st
@@ -894,7 +894,7 @@ GEMINI_API_KEY=your_api_key_here
         st.markdown("""
         <div style="text-align: center; color: #7f8c8d; padding: 2rem 0;">
             <p>🏗️ ConStrite - Built with ❤️ for BNB Marathon 2025</p>
-            <p>Powered by Gemini 2.0 Flash Vision | Google Cloud Platform</p>
+            <p>Powered by Gemini 2.5 Pro | Google Cloud Platform</p>
             <p style="font-size: 0.8rem; margin-top: 1rem;">
                 Making construction sites safer, one analysis at a time
             </p>

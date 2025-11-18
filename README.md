@@ -1,6 +1,6 @@
 # 🏗️ ConStrite - Construction Safety Monitor
 
-[![Gemini 2.0 Flash](https://img.shields.io/badge/Gemini-2.0%20Flash-4285F4?logo=google)](https://ai.google.dev)
+[![Gemini 2.5 Pro](https://img.shields.io/badge/Gemini-2.5%20Pro-4285F4?logo=google)](https://ai.google.dev)
 [![Cloud Run](https://img.shields.io/badge/Cloud%20Run-Deployed-4285F4?logo=google-cloud)](https://cloud.google.com/run)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.29.0-FF4B4B?logo=streamlit)](https://streamlit.io)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -8,7 +8,7 @@
 > **AI-Powered Construction Safety Monitoring System**
 > Preventing 48,000+ annual construction deaths in India through real-time AI safety analysis
 
-**Built for BNB Marathon 2025** | Powered by Gemini 2.0 Flash Vision
+**Built for BNB Marathon 2025** | Powered by Gemini 2.5 Pro
 
 ---
 
@@ -43,7 +43,7 @@ Every day in India, **130 construction workers die** due to preventable safety v
 |----------|---------------|-------|
 | **Cloud Run Deployment** | ✅ Fully containerized, auto-scaling | +5 |
 | **Database Usage** | ✅ BigQuery + Firestore integration | +2 |
-| **AI/ML Usage** | ✅ Gemini 2.0 Flash Vision (multimodal) | +5 |
+| **AI/ML Usage** | ✅ Gemini 2.5 Pro (multimodal vision) | +5 |
 | **Working Demo** | ✅ Live, functional, tested | +5 |
 | **Blog Post** | ✅ Published on Medium (2000+ words) | +5 |
 | **Real-World Impact** | ✅ Saves 48,000 lives/year potential | +5 |
@@ -88,7 +88,7 @@ Visit `http://localhost:8501` to access the application.
 ## 🎨 Features
 
 ### 1. AI-Powered Image Analysis
-Upload construction site photos and get instant safety analysis powered by Gemini 2.0 Flash Vision.
+Upload construction site photos and get instant safety analysis powered by Gemini 2.5 Pro.
 
 ### 2. BIS Standards Compliance
 Comprehensive checking against 15+ Indian construction safety standards:
@@ -286,7 +286,7 @@ python utils/bigquery_logger.py
 ## 🛠️ Technology Stack
 
 - **Frontend**: Streamlit 1.29.0
-- **AI/ML**: Google Gemini 2.0 Flash Vision
+- **AI/ML**: Google Gemini 2.5 Pro
 - **Database**: BigQuery, Firestore
 - **Storage**: Google Cloud Storage
 - **Deployment**: Cloud Run (serverless)
